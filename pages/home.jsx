@@ -2,7 +2,6 @@ import ChartContainer from "../components/ChartContainer";
 import TaskContainer from "../components/TaskContainer";
 import Navbar from "../components/Navbar";
 
-
 const Home = () => {
   return (
     <div className="App">
