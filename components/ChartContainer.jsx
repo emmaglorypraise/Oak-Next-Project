@@ -53,7 +53,7 @@ const ChartContainer = () => {
                             <div className='p-[20px] w-full'>
                                 <div className='flex justify-between mb-4 mr-auto w-full'>
                                     <div className='flex'>
-                                    <Image src={bitcoin} width="48"  height="48" className='mb-[10px] mr-[10px]'  alt="bitcoin" />
+                                    <Image src={bitcoin} width="17.55"  height="17.55" className='mb-[10px] mr-[10px]'  alt="bitcoin" />
                                     <div>
                                         <p className='font-poppins font-semibold text-[14.036px] leading-[21px] text-[off-black]'>BTC</p>
                                         <p className='font-poppins font-normal text-[8.77285px] leading-[13px] text-[off-grey]'>Bitcoin</p>
@@ -67,7 +67,7 @@ const ChartContainer = () => {
                                 </div>
                                 <div className='flex justify-between mb-4 mr-auto w-full'>
                                 <div className='flex'>
-                                    <Image src={ethereum} width="48"  height="48" className='mb-[10px] mr-[10px]'  alt="ethereum" />
+                                    <Image src={ethereum} width="17.55"  height="17.55" className='mb-[10px] mr-[10px]'  alt="ethereum" />
                                     <div>
                                         <p className='font-poppins font-semibold text-[14.036px] leading-[21px] text-[off-black]'>ETH</p>
                                         <p className='font-poppins font-normal text-[8.77285px] leading-[13px] text-[off-grey]'>Ethereum</p>
@@ -81,7 +81,7 @@ const ChartContainer = () => {
                                 </div>
                                 <div className='flex justify-between mb-4 mr-auto w-full'>
                                 <div className='flex'>
-                                    <Image src={usdt} width="48"  height="48" className='mb-[10px] mr-[10px]'  alt="usdt" />
+                                    <Image src={usdt} width="17.55"  height="17.55" className='mb-[10px] mr-[10px]'  alt="usdt" />
                                     <div>
                                             <p className='font-poppins font-semibold text-[14.036px] leading-[21px] text-[off-black]'>USDT</p>
                                             <p className='font-poppins font-normal text-[8.77285px] leading-[13px] text-[off-grey]'>Tether</p>
