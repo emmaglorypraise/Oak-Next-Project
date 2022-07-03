@@ -42,4 +42,4 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Deployed on Vercel
 
-Check out our [Oak Automation project](https://nextjs.org/docs/deployment) for more details.
+Check out our [Oak Automation project](https://oak-next-project.vercel.app/) for more details.

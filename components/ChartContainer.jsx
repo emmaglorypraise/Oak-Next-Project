@@ -19,7 +19,7 @@ const ChartContainer = () => {
                         <span className='text-[#676565] font-semibold text-2xl'>USD 50,345.28</span>
                     </div>
                     <div className='flex pt-[70px] pb-[36px]'>
-                        <div className='p-[16px] border-r-[0.88px] left-0 border-r-[#C1C1C1] border-solid flex flex-col'>
+                        <div className='py-[16px] pr-[16px] border-r-[0.88px] left-0 border-r-[#C1C1C1] border-solid flex flex-col'>
                             <div className='flex'>
                             <RiArrowUpLine color='#1E9940' fill='#1E9940' stroke='#1E9940'/>
                             <span className='text-[#3A373799] font-medium text-xs'>Income</span>
@@ -37,9 +37,9 @@ const ChartContainer = () => {
 
                 </div>
 
-                <div className='flex flex-col'>
-                    <div className='flex flex-col md:flex-row justify-between'>
-                    <div className="flex flex-col justify-center w-full :w-1/3 ml-[20px]">
+                <div className='flex flex-col justify-start'>
+                    <div className='flex flex-col lg:flex-row justify-start md:justify-between'>
+                    <div className="flex flex-col justify-center w-full md:w-1/3 md:ml-[20px]">
                         <h3 className='text-[#9E2F92] text-lg font-semibold mr-[250px] text-center'>Wallet</h3>
                         <div className='flex justify-start'> 
                             <Piechart />
@@ -49,9 +49,9 @@ const ChartContainer = () => {
                     <div className='flex flex-col justify-center w-full md:w-2/3'>
 
                         <span className='text-end font-poppins text-[10.5274px] leading-[16px]'>3 currencies</span>
-                        <div className='bg-[#F4F1F1] rounded-lg mt-[7px] ml-[21px] mr-[12px] mb-[18px] flex'>
-                            <div className='p-[20px] w-full'>
-                                <div className='flex  justify-between mb-4 mr-auto w-full'>
+                        <div className='bg-[#F4F1F1] rounded-lg mt-[7px] md:ml-[21px] w-full mb-[18px] mx-auto p-[20px] flex'>
+                            <div className=' w-full'>
+                                <div className='flex md:gap-[80px]  justify-between mb-4 mr-auto w-full'>
                                     <div className='flex'>
                                         <div className='mr-[10px]'>
                                         <Image src={bitcoin} width="17.55"  height="17.55" className='mb-[10px] mr-[10px]'  alt="bitcoin" />
@@ -67,7 +67,7 @@ const ChartContainer = () => {
                                         <p className='font-poppins font-normal text-[10.5274px] leading-[16px] text-[#1E9940]'>13.4%</p>
                                     </div>
                                 </div>
-                                <div className='flex justify-between mb-4 mr-auto w-full'>
+                                <div className='flex md:gap-[80px] justify-between mb-4 mr-auto w-full'>
                                 <div className='flex'>
                                     <div className='mr-[10px]'>
                                     <Image src={ethereum} width="17.55"  height="17.55" className='mb-[10px] mr-[10px]'  alt="ethereum" />
@@ -83,7 +83,7 @@ const ChartContainer = () => {
                                         <p className='font-poppins font-normal text-[10.5274px] leading-[16px] text-[#1E9940]'>13.4%</p>
                                 </div>
                                 </div>
-                                <div className='flex justify-between mb-4 mr-auto w-full'>
+                                <div className='flex md:gap-[80px] justify-between mb-4 mr-auto w-full'>
                                 <div className='flex'>
                                     <div className='mr-[10px]'>
                                     <Image src={usdt} width="17.55"  height="17.55" className='mb-[10px] mr-[10px]'  alt="usdt" />
