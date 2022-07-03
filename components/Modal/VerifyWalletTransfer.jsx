@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { RiShareForwardFill } from 'react-icons/ri';
 import WalletIcon from '../../assets/walletIcon.svg';
+import Image from 'next/image';
 
 const VerifyWalletTransfer = () => {
   const [showModal, setShowModal] = useState(false);
@@ -31,9 +32,9 @@ const VerifyWalletTransfer = () => {
                       </span>
                   </button>
                   <div className="mt-4 flex flex-row justify-start">
-                  <img src={WalletIcon} className="px-2" width={76} alt="schedule Icon" />
+                  <Image width="50" height="50" src={WalletIcon} className="px-2" alt="schedule Icon" />
                   <div>
-                  <h3 className="text-center font-poppins font-semibold text-[30px] leading-[45px] text-[#3A3737]">View wallet transfer</h3>
+                  <h3 className="text-center ml-3 font-poppins font-semibold text-[30px] leading-[45px] text-[#3A3737]">View wallet transfer</h3>
                   </div>
                   </div>
                   

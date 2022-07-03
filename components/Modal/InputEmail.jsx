@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { RiAddFill } from 'react-icons/ri';
 import emailIcon from '../../assets/emailIcon.svg';
+import Image from 'next/image';
 
 const InputEmail = () => {
   const [showModal, setShowModal] = useState(false);
@@ -32,9 +33,9 @@ const InputEmail = () => {
                       </span>
                   </button>
                   <div className="mt-4 flex flex-row justify-start">
-                  <img src={emailIcon} className="px-2" width={76} alt="schedule Icon" />
+                  <Image width="50" height="50" src={emailIcon} className="px-2" alt="schedule Icon" />
                   <div>
-                  <h3 className="text-center font-poppins font-semibold text-[30px] leading-[45px] text-[#3A3737]">Email Notifications</h3>
+                  <h3 className="text-center ml-3 font-poppins font-semibold text-[30px] leading-[45px] text-[#3A3737]">Email Notifications</h3>
                   <p className="text-center font-poppins font-normal text-[10px] leading-[15px] text-off-grey">You will receive email notifications of missed tasks and scheduled tasks</p>
                   </div>
                   </div>

@@ -3,10 +3,11 @@ import {  RiCheckboxBlankCircleFill } from "react-icons/ri";
 import FullCalendar from './MainCalender.jsx'
 import ScheduleTask from "./Modal/ScheduleTask";
 
+
 const style = {
-  wrapper: `flex mt-[30px] pl-[40px] pr-[40px]`,
-  TaskContainer: `bg-[#F4F1F1] w-4/5 mr-[10px] shadow-task  rounded-[10px]`,
-  assetContainer: `bg-[#F4F1F1] w-1/5 ml-[10px] shadow-task rounded-[8.42227px]`,
+  wrapper: `flex mt-[30px] px-[15px] md:pl-[40px] md:pr-[40px] flex-col md:flex-row w-full mx-auto`,
+  TaskContainer: `bg-[#F4F1F1] w-full md:w-3/5 md:mr-[10px] shadow-task  rounded-[10px] mb-2`,
+  assetContainer: `bg-[#F4F1F1] w-full md:w-2/5 md:ml-[10px] mb-[10px] shadow-task rounded-[8.42227px]`,
 };
 
 const CalenderBox = () => {

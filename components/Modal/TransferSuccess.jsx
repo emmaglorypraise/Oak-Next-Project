@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { RiShareForwardFill } from 'react-icons/ri';
 import successIcon from '../../assets/successIcon.svg';
+import Image from 'next/image';
 
 const TransferSuccess = () => {
   const [showModal, setShowModal] = useState(false);
@@ -32,7 +33,7 @@ const TransferSuccess = () => {
                   </button>
                 </div>
                 <div className="relative p-6  flex justify-center flex-col place-items-center">
-                  <img src={successIcon} alt="success icon" className="px-3 mb-3" width={146} height={146}/>
+                  <Image width="146" height="146" src={successIcon} alt="success icon" className="px-3 mb-3" />
                   <div>
                     <p className="text-center font-poppins font-medium text-[20px] leading-[30px] text-[#535151]">
                     You have successfully scheduled a transfer.</p>

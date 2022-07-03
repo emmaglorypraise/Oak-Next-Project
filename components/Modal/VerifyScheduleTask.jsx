@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { RiAddFill } from 'react-icons/ri';
 import scheduleIcon from '../../assets/scheduleIcon.svg';
+import Image from 'next/image';
 
 const VerifyScheduleTask = () => {
   const [showModal, setShowModal] = useState(false);
@@ -32,9 +33,9 @@ const VerifyScheduleTask = () => {
                       </span>
                   </button>
                   <div className="mt-4 flex flex-row justify-start">
-                  <img src={scheduleIcon} className="px-2" width={76} alt="schedule Icon" />
+                  <Image width="50" height="50" src={scheduleIcon} className="px-2"alt="schedule Icon" />
                   <div>
-                  <h3 className="text-center font-poppins font-semibold text-[30px] leading-[45px] text-[#3A3737]">View Schedule</h3>
+                  <h3 className="text-center ml-3 font-poppins font-semibold text-[30px] leading-[45px] text-[#3A3737]">View Schedule</h3>
                   </div>
                   </div>
                   
