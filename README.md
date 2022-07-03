@@ -1,3 +1,23 @@
+About this project:
+
+An Automation DApp that provides a delightful and transparent user experience for OAK Blockchains
+(starting with Neumann and Turing).
+
+When provided with a wallet address, the Automation DApp to be able to:
+● View the current tasks queued for the given wallet
+● Create a future scheduled task to:
+○ Notify event on the blockchain via
+automationTime.scheduleNotifyTask(providedId, time,
+message)
+○ Perform a wallet transfer via
+automationTime.scheduleNativeTransferTask(providedId,
+time, recipientId, amount)
+● Integrate with an external notification service with the possible use cases:
+○ Listens for events from automationTime.scheduleNotifyTask(providedId, time,
+message) to send an email notification.
+○ Listens for missed tasks events to send an email notification to inform the end
+use
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -18,17 +38,8 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployed on Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out our [Oak Automation project](https://nextjs.org/docs/deployment) for more details.

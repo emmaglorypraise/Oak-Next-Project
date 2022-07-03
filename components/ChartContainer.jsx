@@ -51,7 +51,7 @@ const ChartContainer = () => {
                         <span className='text-end font-poppins text-[10.5274px] leading-[16px]'>3 currencies</span>
                         <div className='bg-[#F4F1F1] rounded-lg mt-[7px] ml-[21px] mr-[12px] mb-[18px] flex'>
                             <div className='p-[20px] w-full'>
-                                <div className='flex justify-between mb-4 mr-auto w-full'>
+                                <div className='flex  justify-between mb-4 mr-auto w-full'>
                                     <div className='flex'>
                                         <div className='mr-[10px]'>
                                         <Image src={bitcoin} width="17.55"  height="17.55" className='mb-[10px] mr-[10px]'  alt="bitcoin" />
