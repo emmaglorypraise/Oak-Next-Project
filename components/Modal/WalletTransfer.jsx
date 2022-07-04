@@ -27,7 +27,7 @@ const WalletTransfer = () => {
       setMessage("Email submission successful! Check your email for the code.");
       setSubmitted(true);
       setShowModal(false);
-      console.log(values);
+      // console.log(values);
       await transfer(values.receipentAddress, values.date, values.amount); // get form value
     },
     validationSchema: yup.object({

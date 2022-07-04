@@ -14,7 +14,7 @@ const initialState = {
 export const fetchAllTask = createAsyncThunk(
   "task/getTasks",
   async (data, thunkAPI) => {
-    console.log(data);
+    // console.log(data);
     return await apiCall(
       `/task/get-tasks-for-address?address=${data?.address}`,
       "GET",
@@ -31,7 +31,7 @@ export const scheduleTasks = createAsyncThunk(
 );
 
 const apiCall = async (url, method, body) => {
-  console.log(1);
+  // console.log(1);
   if (method === "GET") {
     try {
       const response = await ApiClient.get(url);
@@ -45,7 +45,7 @@ const apiCall = async (url, method, body) => {
       const response = await ApiClient.post(url, {
         ...body,
       });
-      console.log(response);
+      // console.log(response);
       return formatSuccessResponse(response.data);
     } catch (error) {
       return formatErrorResponse(error);
@@ -68,7 +68,7 @@ export const taskSlice = createSlice({
     builder.addCase(fetchAllTask.fulfilled, (state, action) => {
       state.loading = false;
       state.allTasks = action.payload;
-      console.log(action.payload);
+      // console.log(action.payload);
     });
     builder.addCase(fetchAllTask.rejected, (state, action) => {
       state.loading = false;

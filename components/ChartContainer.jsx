@@ -10,7 +10,7 @@ import WalletTransfer from "./Modal/WalletTransfer.jsx";
 
 const ChartContainer = () => {
   const { balance } = useSelector((state) => state.connect);
-  console.log(balance);
+  //   console.log(balance);
   return (
     <div className="flex w-full  px-[10px] md:pl-[40px] md:pr-[40px] font-poppins">
       <div className="w-full md:w-2/2 flex flex-col md:flex-row gap-[12px] bg-[#FFF2FC] rounded-lg shadow-container py-[20px] px-[30px] pt-[25px]">

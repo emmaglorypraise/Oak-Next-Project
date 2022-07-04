@@ -26,7 +26,7 @@ const ScheduleTask = () => {
       setMessage("Email submission successful! Check your email for the code.");
       setSubmitted(true);
       setShowModal(false);
-      console.log(values);
+      // console.log(values);
       await createAutomationTask(values.address, values.message, values.date); // get form value
     },
     validationSchema: yup.object({

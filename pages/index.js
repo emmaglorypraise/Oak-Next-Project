@@ -12,7 +12,7 @@ const Home = () => {
   const { getAllTask } = useTask();
   const { address } = useSelector((state) => state.connect);
   const { loading } = useSelector((state) => state.task);
-  console.log(loading);
+  // console.log(loading);
 
   useEffect(() => {
     (async () => {

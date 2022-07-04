@@ -18,7 +18,7 @@ const Navbar = () => {
 
   const handleClick = () => {
     setActive(!active);
-    console.log("works");
+    // console.log("works");
   };
   return (
     <>
