@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
 
 const withTM = require("next-transpile-modules")([
   "@fullcalendar/common",
@@ -13,7 +13,9 @@ const withTM = require("next-transpile-modules")([
   "@fullcalendar/interaction",
   "@fullcalendar/react",
   "@fullcalendar/timegrid",
+  "oak-js-library",
 ]);
 
 module.exports = withTM({
+  nextConfig,
 });

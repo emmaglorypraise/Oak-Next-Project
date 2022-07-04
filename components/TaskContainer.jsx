@@ -1,9 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { RiArrowDownSLine, RiCheckboxBlankCircleFill } from "react-icons/ri";
 import pencil from "../assets/pencil.svg";
-import Image from 'next/image';
+import Image from "next/image";
 import metamask from "../assets/metamask.svg";
 import ScheduleTask from "./Modal/ScheduleTask";
+import { addressShortner } from "../utils/helper";
 
 const style = {
   wrapper: `flex flex-col md:flex-row mt-[30px] px-[10px] md:pl-[40px] md:pr-[40px]`,
@@ -11,6 +13,7 @@ const style = {
   assetContainer: `bg-[#FFF8F8] w-full md:w-2/5 mx-auto md:ml-[10px] shadow-container rounded-[8.77px]`,
 };
 const TaskContainer = () => {
+  const { allTasks } = useSelector((state) => state.task);
   return (
     <div className={style.wrapper}>
       <div className={style.TaskContainer}>
@@ -19,13 +22,17 @@ const TaskContainer = () => {
             Current Task List{" "}
             <span>
               <div className="ml-[10px]">
-              <Image width="37" height="36.68" className="ml-5" src={pencil} alt="pencil icon" />
+                <Image
+                  width="37"
+                  height="36.68"
+                  className="ml-5"
+                  src={pencil}
+                  alt="pencil icon"
+                />
               </div>
             </span>{" "}
           </h1>
-          <div className="flex">
-
-          </div>
+          <div className="flex"></div>
           <h1 className="flex text-[#A22C90] text-[14px] leading-[21px] font-medium font-poppins">
             View all{" "}
             <span>
@@ -45,126 +52,40 @@ const TaskContainer = () => {
               Trigger
             </span>
             <span className="text-[#A8278C] text-[14px] leading-[21px] font-medium font-poppins px-[10px] ">
-              Status
+              Message
             </span>
           </div>
-          <div className="bg-white  flex justify-between p-4 mb-2">
-            <span className="text-[14px] leading-[21px] font-medium text-off-grey font-poppins flex">
-              {" "}
-              <span>
-                <RiCheckboxBlankCircleFill
-                  className="mr-2"
-                  color="#1E9940"
-                  fill="#1E9940"
-                  stroke="#1E9940"
-                />
-              </span>
-              Send 0.24 eth daily
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-off-grey font-poppins">
-            0x71C7656EC7ab88b0...
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-[#A8278C] font-poppins">
-              Time
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-[#1E9940] font-poppins">
-              Running
-            </span>
-          </div>
-          <div className="bg-white  flex justify-between p-4 mb-2">
-            <span className="text-[14px] leading-[21px] font-medium text-off-grey font-poppins flex">
-              {" "}
-              <span>
-                <RiCheckboxBlankCircleFill
-                  className="mr-2"
-                  color="#E81C1C"
-                  fill="#E81C1C"
-                  stroke="#E81C1C"
-                />
-              </span>
-              Buy 0.24 eth daily{" "}
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-off-grey font-poppins">
-              0x71C7656EC7ab88b0...
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-[#A8278C] font-poppins">
-              Time
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-[#E81C1C] font-poppins">
-              Stopped
-            </span>
-          </div>
-          <div className="bg-white  flex justify-between p-4 mb-2">
-            <span className="text-[14px] leading-[21px] font-medium text-off-grey font-poppins flex">
-              {" "}
-              <span>
-                <RiCheckboxBlankCircleFill
-                  className="mr-2"
-                  color="#CC7F0C"
-                  fill="#CC7F0C"
-                  stroke="#CC7F0C"
-                />
-              </span>
-              Send 0.24 eth daily{" "}
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-off-grey font-poppins">
-            0x71C7656EC7ab88b0...
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-[#A8278C] font-poppins">
-              Time
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-[#CC7F0C] font-poppins">
-              Pending
-            </span>
-          </div>
-          <div className="bg-white  flex justify-between p-4 mb-2">
-            <span className="text-[14px] leading-[21px] font-medium text-off-grey font-poppins flex">
-              {" "}
-              <span>
-                <RiCheckboxBlankCircleFill
-                  className="mr-2"
-                  color="#1E9940"
-                  fill="#1E9940"
-                  stroke="#1E9940"
-                />
-              </span>
-              Send 0.24 eth daily
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-off-grey font-poppins">
-            0x71C7656EC7ab88b0...
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-[#A8278C] font-poppins">
-              Time
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-[#1E9940] font-poppins">
-              Paused
-            </span>
-          </div>
-          <div className="bg-white  flex justify-between p-4 mb-2">
-            <span className="text-[14px] leading-[21px] font-medium text-off-grey font-poppins flex">
-              {" "}
-              <span>
-                <RiCheckboxBlankCircleFill
-                  className="mr-2"
-                  color="#1E9940"
-                  fill="#1E9940"
-                  stroke="#1E9940"
-                />
-              </span>
-              Send 0.24 eth daily
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-off-grey font-poppins">
-            0x71C7656EC7ab88b0...
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-[#A8278C] font-poppins">
-              Time
-            </span>
-            <span className="text-[12px] leading-[18px] font-medium text-[#1E9940] font-poppins">
-              Paused
-            </span>
-          </div>
+          {allTasks &&
+            allTasks?.map((task) => {
+              return (
+                <div
+                  key={task.id}
+                  className="bg-white  flex justify-between p-4 mb-2"
+                >
+                  <span className="text-[14px] leading-[21px] font-medium text-off-grey font-poppins flex">
+                    {task.id}
+                  </span>
+                  <span className="text-[12px] leading-[18px] font-medium text-off-grey font-poppins">
+                    {addressShortner(task?.address)}
+                  </span>
+                  <span className="text-[12px] leading-[18px] font-medium text-[#A8278C] font-poppins">
+                    {task.timeSlot}
+                  </span>
+                  <span className="text-[12px] leading-[18px] font-medium text-off-grey font-poppins">
+                    {task.message}
+                  </span>
+                </div>
+              );
+            })}
+          {allTasks.length === 0 && (
+            <div className="flex justify-center items-center w-full py-[30px]">
+              <h1 className="flex text-[#A22C90] text-[30px] leading-[21px] font-medium font-poppins">
+                No Task Yet
+              </h1>
+            </div>
+          )}
         </div>
-        <ScheduleTask/>
+        <ScheduleTask />
       </div>
       <div className={style.assetContainer}>
         <div className="flex justify-between pt-8 pb-5 px-5">
@@ -194,9 +115,15 @@ const TaskContainer = () => {
             <span className="text-[12px] leading-[18px] font-normal text-[#3a3737] font-poppins flex">
               {" "}
               <div className="mr-[12px]">
-              <span>
-                <Image src={metamask} width="28"  height="27" className="mr-4" alt="metamask icon" />
-              </span>
+                <span>
+                  <Image
+                    src={metamask}
+                    width="28"
+                    height="27"
+                    className="mr-4"
+                    alt="metamask icon"
+                  />
+                </span>
               </div>
               Metamask
             </span>
@@ -211,9 +138,15 @@ const TaskContainer = () => {
             <span className="text-[12px] leading-[18px] font-normal text-[#3a3737] font-poppins flex">
               {" "}
               <div className="mr-[12px]">
-              <span>
-                <Image src={metamask} width="28"  height="27" className="mr-4" alt="metamask icon" />
-              </span>
+                <span>
+                  <Image
+                    src={metamask}
+                    width="28"
+                    height="27"
+                    className="mr-4"
+                    alt="metamask icon"
+                  />
+                </span>
               </div>
               Metamask
             </span>
@@ -228,9 +161,15 @@ const TaskContainer = () => {
             <span className="text-[12px] leading-[18px] font-normal text-[#3a3737] font-poppins flex">
               {" "}
               <div className="mr-[12px]">
-              <span>
-                <Image src={metamask} width="28"  height="27" className="mr-4" alt="metamask icon" />
-              </span>
+                <span>
+                  <Image
+                    src={metamask}
+                    width="28"
+                    height="27"
+                    className="mr-4"
+                    alt="metamask icon"
+                  />
+                </span>
               </div>
               Metamask
             </span>
@@ -245,9 +184,15 @@ const TaskContainer = () => {
             <span className="text-[12px] leading-[18px] font-normal text-[#3a3737] font-poppins flex">
               {" "}
               <div className="mr-[12px]">
-              <span>
-                <Image src={metamask} width="28"  height="27" className="mr-4" alt="metamask icon" />
-              </span>
+                <span>
+                  <Image
+                    src={metamask}
+                    width="28"
+                    height="27"
+                    className="mr-4"
+                    alt="metamask icon"
+                  />
+                </span>
               </div>
               Metamask
             </span>
@@ -262,9 +207,15 @@ const TaskContainer = () => {
             <span className="text-[12px] leading-[18px] font-normal text-[#3a3737] font-poppins flex">
               {" "}
               <div className="mr-[12px]">
-              <span>
-                <Image src={metamask} width="28"  height="27" className="mr-4" alt="metamask icon" />
-              </span>
+                <span>
+                  <Image
+                    src={metamask}
+                    width="28"
+                    height="27"
+                    className="mr-4"
+                    alt="metamask icon"
+                  />
+                </span>
               </div>
               Metamask
             </span>
@@ -279,9 +230,15 @@ const TaskContainer = () => {
             <span className="text-[12px] leading-[18px] font-normal text-[#3a3737] font-poppins flex">
               {" "}
               <div className="mr-[12px]">
-              <span>
-                <Image src={metamask} width="28"  height="27" className="mr-4" alt="metamask icon" />
-              </span>
+                <span>
+                  <Image
+                    src={metamask}
+                    width="28"
+                    height="27"
+                    className="mr-4"
+                    alt="metamask icon"
+                  />
+                </span>
               </div>
               Metamask
             </span>
@@ -296,9 +253,15 @@ const TaskContainer = () => {
             <span className="text-[12px] leading-[18px] font-normal text-[#3a3737] font-poppins flex">
               {" "}
               <div className="mr-[12px]">
-              <span>
-                <Image src={metamask} width="28"  height="27" className="mr-4" alt="metamask icon" />
-              </span>
+                <span>
+                  <Image
+                    src={metamask}
+                    width="28"
+                    height="27"
+                    className="mr-4"
+                    alt="metamask icon"
+                  />
+                </span>
               </div>
               Metamask
             </span>
