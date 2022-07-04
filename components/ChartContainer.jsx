@@ -10,6 +10,7 @@ import WalletTransfer from "./Modal/WalletTransfer.jsx";
 const ChartContainer = () => {
     return (
         <div className='flex w-full  px-[10px] md:pl-[40px] md:pr-[40px] font-poppins'>
+        
             <div className="w-full md:w-2/2 flex flex-col md:flex-row gap-[12px] bg-[#FFF2FC] rounded-lg shadow-container py-[20px] px-[30px] pt-[25px]">
 
                 <div className='w-full md:w-1/2 md:border-r-[0.88px] md:border-r-[#C1C1C1] md:border-solid  md:border-b-[0] border-b-[0.88px] border-b-[#C1C1C1] border-solid'>

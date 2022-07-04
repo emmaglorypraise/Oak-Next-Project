@@ -2,9 +2,51 @@ import React, { useState } from "react";
 import { RiShareForwardFill } from 'react-icons/ri';
 import WalletIcon from '../../assets/walletIcon.svg';
 import Image from 'next/image';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 const WalletTransfer = () => {
   const [showModal, setShowModal] = useState(false);
+
+  const [message, setMessage] = useState(''); 
+  
+  const [submitted, setSubmitted] = useState(false);
+
+  const formik = useFormik({
+    initialValues: {
+      address: '',
+      date: '',
+      time: '',
+      receipentAddress: '',
+      amount: '',
+    },
+    onSubmit: (values) => {
+      setMessage('Email submission successful! Check your email for the code.');
+      setSubmitted(true);
+      setShowModal(false);
+      console.log(values) // get form value
+    },
+    validationSchema: yup.object({
+      address: yup
+        .string()
+        .required('Input your wallet address')
+        .min(20, 'Must be a valid wallet address'),
+      date: yup
+         .string()
+         .required('Choose date'),
+      time: yup
+        .string()
+        .required('Choose time'),
+      receipentAddress: yup
+        .string()
+        .required('Input the receipent wallet address')
+        .min(20, 'Must be a valid receipent wallet address'),
+      amount: yup
+      .string()
+      .required('Enter an amount to transfer'),
+    }),
+  });
+
   return (
     <>
       <div className='flex justify-center place-content-center mb-[30px]'>
@@ -41,37 +83,90 @@ const WalletTransfer = () => {
                   
                 </div>
                 <div className="relative p-6 flex-auto">
-                  <form className="  px-3 pt-1 w-full">
+                  <form onSubmit={formik.handleSubmit} className="px-3 pt-1 w-full">
+                    <div hidden={!submitted} className="text-green-600 ml-3 mb-2" role="alert">
+                      {message}
+                    </div>
+
                     <label className="block text-[#3A3737] text-poppins text-[13.0127px] leading-[20px] font-normal mb-1">
                     Your wallet address
                     </label>
-                    <input type='text' placeholder="Input your wallet address" className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3" />
+                    <input 
+                    type='text' 
+                    placeholder="Input your wallet address" 
+                    name="address"
+                    value={formik.values.address}
+                    onChange={formik.handleChange}
+                    className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3" />
+                    {formik.errors.address && (
+                      <div className="text-red-500 mb-3">{formik.errors.address}</div>
+                    )}
+
                     <label className="block text-[#3A3737] text-poppins text-[13.0127px] leading-[20px] font-normal mb-1">
                      Set a date  
                     </label>
-                    <input type='date' placeholder="Set a date for transfer" className="appearance-none  focus:outline-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3" />
+                    <input 
+                    type='date' 
+                    placeholder="Set a date for transfer" 
+                    name="date"
+                    value={formik.values.date}
+                    onChange={formik.handleChange}
+                    className="appearance-none  focus:outline-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3" />
+                    {formik.errors.date && (
+                      <div className="text-red-500 mb-3">{formik.errors.date}</div>
+                    )}
+
                     <label className="block text-[#3A3737] text-poppins text-[13.0127px] leading-[20px] font-normal mb-1">
                     Set a time
                     </label>
-                    <input type='time' placeholder="Set a time for transfer" className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3"/>
+                    <input 
+                    type='time' 
+                    placeholder="Set a time for transfer" 
+                    name="time"
+                    value={formik.values.time}
+                    onChange={formik.handleChange}
+                    className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3"/>
+                    {formik.errors.time && (
+                      <div className="text-red-500 mb-3">{formik.errors.time}</div>
+                    )}
+
                     <label className="block text-[#3A3737] text-poppins text-[13.0127px] leading-[20px] font-normal mb-1">
                     Receipent’s wallet address
                     </label>
-                    <input type='text' placeholder="Input the wallet address of the receiver " className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3"/>
+                    <input 
+                    type='text' 
+                    placeholder="Input the wallet address of the receiver " 
+                    name="receipentAddress"
+                    value={formik.values.receipentAddress}
+                    onChange={formik.handleChange}
+                    className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3"/>
+                    {formik.errors.receipentAddress && (
+                      <div className="text-red-500 mb-3">{formik.errors.receipentAddress}</div>
+                    )}
+
                     <label className="block text-[#3A3737] text-poppins text-[13.0127px] leading-[20px] font-normal mb-1">
                     Amount
                     </label>
-                    <input type='text' placeholder="e.g 0.243 eth" className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-1"/>
+                    <input 
+                    type='text' 
+                    placeholder="e.g 0.243 eth" 
+                    name="amount"
+                    value={formik.values.amount}
+                    onChange={formik.handleChange}
+                    className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-1"/>
+                    {formik.errors.amount && (
+                      <div className="text-red-500 mb-3">{formik.errors.amount}</div>
+                    )}
+                    
+                    <div className="flex items-center mt-[20px] justify-center px-6 pt-1 pb-6 rounded-b">
+                      <button
+                        className="p-[15px] font-poppins font-semibold text-[18.09px] leading-[24.1px] text-[#ffffff] bg-[#A22C90] shadow-button rounded-[19.636px] flex justify-center w-2/3 text-center"
+                        type="submit"
+                      >
+                        Schedule Transfer
+                      </button>
+                    </div>
                   </form>
-                </div>
-                <div className="flex items-center justify-center px-6 pt-1 pb-6 rounded-b">
-                  <button
-                    className="p-[15px] font-poppins font-semibold text-[18.09px] leading-[24.1px] text-[#ffffff] bg-[#A22C90] shadow-button rounded-[19.636px] flex justify-center w-2/3 text-center"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Schedule Transfer
-                  </button>
                 </div>
               </div>
             </div>

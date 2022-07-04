@@ -2,9 +2,33 @@ import React, { useState } from "react";
 import { RiAddFill } from 'react-icons/ri';
 import emailIcon from '../../assets/emailIcon.svg';
 import Image from 'next/image';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 const InputEmail = () => {
   const [showModal, setShowModal] = useState(false);
+
+  const [message, setMessage] = useState(''); 
+  
+  const [submitted, setSubmitted] = useState(false);
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+    },
+    onSubmit: (values) => {
+      setMessage('Email submission successful! Check your email for the code.');
+      setSubmitted(true);
+      console.log(values) // get form value
+    },
+    validationSchema: yup.object({
+      email: yup
+        .string()
+        .email('Must be a valid email')
+        .required('Email is required'),
+    }),
+  });
+
   return (
     <>
       <div className="flex justify-end place-content-center mb-[30px] mt-5 mr-5">
@@ -42,23 +66,37 @@ const InputEmail = () => {
                   
                 </div>
                 <div className="relative p-6 flex-auto">
-                  <form className="  px-3 pt-1 w-full">
+                <div hidden={!submitted} className="text-green-600 ml-3 mb-2" role="alert">
+                  {message}
+                </div>
+                  <form onSubmit={formik.handleSubmit} className="px-3 pt-1 w-full">
                     <label className="block text-[#3A3737] text-poppins text-[13.0127px] leading-[20px] font-normal mb-1">
                     Your Email address
                     </label>
-                    <input type='text' placeholder="cryptolover1234@gmail.com" className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3" />
+
+                    <input 
+                    type='text' 
+                    name="email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    placeholder="cryptolover1234@gmail.com" 
+                    className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3" />
+                    {formik.errors.email && (
+                      <div className="text-red-500 mb-3">{formik.errors.email}</div>
+                    )}
+
                     <p className="text-[10px] leading-[15px] font-normal font-poppins text-[#A8278C] ">*A 6-digit token will be sent to your email for verification</p>
+                    <div className="flex items-center justify-center mt-[20px] px-6 pt-1 pb-6 rounded-b">
+                    <button
+                      className="p-[15px] font-poppins font-semibold text-[18.09px] leading-[24.1px] text-[#ffffff] bg-[#A22C90] shadow-button rounded-[19.636px] flex justify-center w-2/3 text-center"
+                      type="submit"
+                    >
+                      Send code to Email
+                    </button>
+                   </div>
                   </form>
                 </div>
-                <div className="flex items-center justify-center px-6 pt-1 pb-6 rounded-b">
-                  <button
-                    className="p-[15px] font-poppins font-semibold text-[18.09px] leading-[24.1px] text-[#ffffff] bg-[#A22C90] shadow-button rounded-[19.636px] flex justify-center w-2/3 text-center"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Send code to Email
-                  </button>
-                </div>
+                
               </div>
             </div>
           </div>

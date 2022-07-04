@@ -2,9 +2,46 @@ import React, { useState } from "react";
 import { RiAddFill } from 'react-icons/ri';
 import scheduleIcon from '../../assets/scheduleIcon.svg';
 import Image from 'next/image';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
-const ScheduleTask = () => {
+const ScheduleTask = () => {  
   const [showModal, setShowModal] = useState(false);
+
+  const [message, setMessage] = useState(''); 
+  
+  const [submitted, setSubmitted] = useState(false);
+
+  const formik = useFormik({
+    initialValues: {
+      address: '',
+      date: '',
+      time: '',
+      message: '',
+    },
+    onSubmit: (values) => {
+      setMessage('Email submission successful! Check your email for the code.');
+      setSubmitted(true);
+      setShowModal(false);
+      console.log(values) // get form value
+    },
+    validationSchema: yup.object({
+      address: yup
+        .string()
+        .required('Input your wallet address')
+        .min(20, 'Must be a valid wallet address'),
+      date: yup
+         .string()
+         .required('Choose date'),
+      time: yup
+        .string()
+        .required('Choose time'),
+      message: yup
+      .string()
+      .required('Enter a note for this task'),
+    }),
+  });
+
   return (
     <>
       <div className="flex justify-end place-content-center mb-[30px] mt-5 mr-5">
@@ -42,33 +79,78 @@ const ScheduleTask = () => {
                   
                 </div>
                 <div className="relative p-6 flex-auto">
-                  <form className="  px-3 pt-1 w-full">
+                  <form onSubmit={formik.handleSubmit}  className="px-3 pt-1 w-full">
+                  <div hidden={!submitted} className="text-green-600 ml-3 mb-2" role="alert">
+                    {message}
+                  </div>
+
                     <label className="block text-[#3A3737] text-poppins text-[13.0127px] leading-[20px] font-normal mb-1">
                     Your wallet address
                     </label>
-                    <input type='text' placeholder="Input your wallet address" className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3" />
+                    <input 
+                    name="address"
+                    value={formik.values.address}
+                    onChange={formik.handleChange}
+                    type='text' 
+                    placeholder="Input your wallet address" 
+                    className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3" 
+                    />
+                    {formik.errors.address && (
+                      <div className="text-red-500 mb-3">{formik.errors.address}</div>
+                    )}
+                    
                     <label className="block text-[#3A3737] text-poppins text-[13.0127px] leading-[20px] font-normal mb-1">
                      Set a date  
                     </label>
-                    <input type='date' placeholder="Set a date for task" className="appearance-none  focus:outline-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3" />
+                    <input 
+                    name="date"
+                    value={formik.values.date}
+                    onChange={formik.handleChange}
+                    type='date' 
+                    placeholder="Set a date for task" 
+                    className="appearance-none  focus:outline-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3" />
+                    {formik.errors.date && (
+                      <div className="text-red-500 mb-3">{formik.errors.date}</div>
+                    )}
+
                     <label className="block text-[#3A3737] text-poppins text-[13.0127px] leading-[20px] font-normal mb-1">
                     Set a time
                     </label>
-                    <input type='time' placeholder="Set a time for task" className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3"/>
+                    <input 
+                    name="time"
+                    value={formik.values.time}
+                    onChange={formik.handleChange}
+                    type='time' 
+                    placeholder="Set a time for task" 
+                    className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3"/>
+                   {formik.errors.time && (
+                      <div className="text-red-500 mb-3">{formik.errors.time}</div>
+                    )}
+
                     <label className="block text-[#3A3737] text-poppins text-[13.0127px] leading-[20px] font-normal mb-1">
                     Message
                     </label>
-                    <input type='text' placeholder="e.g Send 10 eth daily" className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3"/>
+                    <input 
+                    name="message"
+                    value={formik.values.message}
+                    onChange={formik.handleChange}
+                    type='text' 
+                    placeholder="e.g Send 10 eth daily" 
+                    className="appearance-none rounded-[5px] w-full py-2 px-3 text-[13.0127px] leading-[20px] bg-[#E3E3E3] text-placeholder-grey mb-3"/>
+                    {formik.errors.message && (
+                      <div className="text-red-500 mb-3">{formik.errors.message}</div>
+                    )}
+
+                    <div className="flex items-center mt-3 justify-center px-6 pt-1 pb-6 rounded-b">
+                      <button
+                        className="p-[15px] font-poppins font-semibold text-[18.09px] leading-[24.1px] text-[#ffffff] bg-[#A22C90] shadow-button rounded-[19.636px] flex justify-center w-2/3 text-center"
+                        type="submit"
+                      >
+                        Schedule Task
+                      </button>
+
+                    </div>
                   </form>
-                </div>
-                <div className="flex items-center justify-center px-6 pt-1 pb-6 rounded-b">
-                  <button
-                    className="p-[15px] font-poppins font-semibold text-[18.09px] leading-[24.1px] text-[#ffffff] bg-[#A22C90] shadow-button rounded-[19.636px] flex justify-center w-2/3 text-center"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Schedule Task
-                  </button>
                 </div>
               </div>
             </div>

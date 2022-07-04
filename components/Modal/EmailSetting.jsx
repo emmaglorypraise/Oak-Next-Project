@@ -3,6 +3,7 @@ import { RiAddFill } from 'react-icons/ri';
 import settingIcon from '../../assets/settingIcon.svg';
 import Toggle from "../Toggle";
 import Image from 'next/image';
+import InputEmail from "./InputEmail";
 
 const EmailSetting = () => {
   const [showModal, setShowModal] = useState(false);
@@ -34,13 +35,14 @@ const EmailSetting = () => {
                       </span>
                   </button>
                   <div className="mt-4 flex flex-row justify-start">
-                  <Image width="50" height="50" src={settingIcon} className="px-2" alt="schedule Icon" />
+                  <Image width="40" height="40" src={settingIcon} className="px-2" alt="schedule Icon" />
                   <div>
-                  <h3 className="text-center ml-3 font-poppins font-semibold text-[30px] leading-[45px] text-[#3A3737]">Settings</h3>
+                  <h3 className="text-center ml- font-poppins font-semibold text-[30px] leading-[45px] text-[#3A3737]">Settings</h3>
                   <p className="text-center font-poppins font-normal text-[10px] leading-[15px] text-off-grey">Set your preferences</p>
                   </div>
                   </div>
                   
+      
                 </div>
                 <div className="relative p-12 flex-auto">
                   <form className="flex flex-row  px-3 pt-1 w-full">
